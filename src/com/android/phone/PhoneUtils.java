@@ -994,7 +994,7 @@ public class PhoneUtils {
                 if (DBG) log("- using text from PENDING MMI message: '" + text + "'");
                 break;
             case CANCELLED:
-                text = context.getText(R.string.mmiCancelled);
+                text = null;
                 break;
             case COMPLETE:
                 if (app.getPUKEntryActivity() != null) {
@@ -1061,10 +1061,10 @@ public class PhoneUtils {
                     } catch (RemoteException e) {
                         mNwService = null;
                     }
-                    if (DBG) log("Extended NW displayMMIInitiate (" + text + ")");
-                    if (text == null || text.length() == 0)
-                        return;
                 }
+                if (DBG) log("Extended NW displayMMIInitiate (" + text + ")");
+                if (text == null || text.length() == 0)
+                    return;
 
                 // displaying system alert dialog on the screen instead of
                 // using another activity to display the message.  This
